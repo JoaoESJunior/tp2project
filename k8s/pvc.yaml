@@ -9,5 +9,9 @@ spec:
   resources:
     requests:
       storage: 1Gi
+  selector:
+    matchLabels:
+      namespace: joaojunior
+      type: local
   storageClassName: default-storage-class-joaojunior
   volumeName: project2-pv2-joaojunior
