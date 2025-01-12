@@ -25,3 +25,4 @@ spec:
       - name: project2-pv2-joaojunior
         persistentVolumeClaim:
           claimName: project2-pvc-joaojunior
+  backoffLimit: 0  # Define o número de tentativas de reinício (0 = nenhuma)
