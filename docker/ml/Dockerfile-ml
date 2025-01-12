@@ -1,0 +1,9 @@
+FROM python:3.9-slim
+
+RUN pip install pandas
+
+WORKDIR /app
+COPY app/train_model.py /app/
+RUN mkdir -p /home/joaojunior/project2-pv2
+
+CMD ["python3", "/app/train_model.py"]

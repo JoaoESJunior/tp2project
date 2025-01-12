@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: project2-pvc-joaojunior
+  namespace: joaojunior
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: default-storage-class-joaojunior
+  volumeName: project2-pv2-joaojunior

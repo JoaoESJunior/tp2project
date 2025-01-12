@@ -1,0 +1,10 @@
+FROM python:3.9-slim
+
+RUN pip install flask
+
+WORKDIR /app
+COPY app/api_server.py /app/
+RUN mkdir -p /home/joaojunior/project2-pv2
+
+EXPOSE 5000
+CMD ["python3", "/app/api_server.py"]
