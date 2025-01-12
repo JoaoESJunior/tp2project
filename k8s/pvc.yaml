@@ -9,5 +9,5 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: default-storage-class
+  storageClassName: default-storage-class-joaojunior
   volumeName: project2-pv2-joaojunior
