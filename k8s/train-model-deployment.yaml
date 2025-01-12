@@ -1,10 +1,17 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: train-model-job
+  name: train-model-deployment
   namespace: joaojunior
 spec:
+  replicas: 1  # Apenas um pod de treinamento
+  selector:
+    matchLabels:
+      app: train-model
   template:
+    metadata:
+      labels:
+        app: train-model
     spec:
       containers:
       - name: train-model
@@ -20,9 +27,8 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
-      restartPolicy: Never
+      restartPolicy: Always  # Reinicia o pod automaticamente em caso de falha
       volumes:
       - name: project2-pv2-joaojunior
         persistentVolumeClaim:
           claimName: project2-pvc-joaojunior
-  backoffLimit: 0  # Define o número de tentativas de reinício (0 = nenhuma)
