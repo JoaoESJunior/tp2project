@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvc-test-pod
+  namespace: joaojunior
+spec:
+  containers:
+  - name: pvc-tester
+    image: busybox  # Imagem leve para testes
+    command: ["sh", "-c", "echo 'Teste de PVC' > /mnt/pv/test.txt && sleep 3600"]  # Cria um arquivo e mantém o pod ativo
+    volumeMounts:
+    - mountPath: /mnt/pv  # Caminho interno onde o PVC será montado
+      name: project2-pv2-joaojunior
+  volumes:
+  - name: project2-pv2-joaojunior
+    persistentVolumeClaim:
+      claimName: project2-pvc-joaojunior  # Nome do PVC configurado no projeto
