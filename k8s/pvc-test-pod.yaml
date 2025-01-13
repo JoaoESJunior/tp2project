@@ -7,11 +7,14 @@ spec:
   containers:
   - name: pvc-tester
     image: busybox  # Imagem leve para testes
-    command: ["sh", "-c", "echo 'Teste de PVC' > /home/joaojunior/project2-pv2/test.txt && sleep 3600"]  # Cria um arquivo e mantém o pod ativo
+    #command: ["sh", "-c", "echo 'Teste de PVC' > /home/joaojunior/project2-pv2/test.txt && sleep 3600"]  # Cria um arquivo e mantém o pod ativo
+    command: ["sh", "-c", "while true; do sleep 30; done;"]
     volumeMounts:
-    - mountPath: /home/joaojunior/project2-pv2  # Caminho interno onde o PVC será montado
+    #- mountPath: /home/joaojunior/project2-pv2  # Caminho interno onde o PVC será montado
+    - mountPath: /mnt
       name: project2-pv2-joaojunior
   volumes:
   - name: project2-pv2-joaojunior
     persistentVolumeClaim:
       claimName: project2-pvc-joaojunior  # Nome do PVC configurado no projeto
+
